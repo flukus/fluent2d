@@ -32,24 +32,61 @@ public class Region<T extends Region<?>> {
 		this.parent = parent;
 	}
 
+	// gets the absolute value of top
 	public int top() {
 		return this.top;
 	}
 
 	// sets the top as a percentage
-	public T top(float f) {
-		top = (int) ((parent.bottom() - parent.top()) * f) + parent.top();
+	public T top(float topP) {
+		top = MathUtil.getPoint(topP, parent.top(), parent.bottom());
 		return (T) this;
 	}
 
-	// sets the top in absolute pixels
-	public T top(int top) {
-		this.top = top;
+	// sets the top in pixels relative to the parent
+	public T top(int topV) {
+		top = topV + parent.top();
+		return (T) this;
+	}
+
+	// sets the top value in absolute pixels, ignoring parent dimensions
+	public T topA(int topV) {
+		top = topV;
+		return (T) this;
+	}
+
+	// sets the top value in absolte pixels relative to it's current value
+	public T topR(int topR) {
+		top = top + topR;
 		return (T) this;
 	}
 
 	public int left() {
 		return this.left;
+	}
+
+	// sets the left as a percentage
+	public T left(float leftP) {
+		top = MathUtil.getPoint(leftP, parent.left(), parent.right());
+		return (T) this;
+	}
+
+	// sets the left in pixels relative to the parent
+	public T left(int leftV) {
+		left = leftV + parent.left();
+		return (T) this;
+	}
+
+	// sets the left value in absolute pixels, ignoring parent dimensions
+	public T leftA(int leftV) {
+		left = leftV;
+		return (T) this;
+	}
+
+	// sets the left value in absolte pixels relative to it's current value
+	public T leftR(int leftV) {
+		left = leftV + left;
+		return (T) this;
 	}
 
 	public int bottom() {
@@ -90,17 +127,21 @@ public class Region<T extends Region<?>> {
 		return (T) this;
 	}
 
-	public T width(float f) {
-		right = (int) ((parent.right() - parent.left()) / f) + parent.left();
+	public T width(float widthP) {
+		right = MathUtil.getPoint(widthP, parent.left(), parent.right()) + left;
 		return (T) this;
 	}
 
-	public void height(float f) {
-		// TODO Auto-generated method stub
+	public T height(float heightP) {
+		right = MathUtil.getPoint(heightP, parent.top(), parent.bottom()) + top;
+		return (T) this;
 	}
 
 	public T centerHorizontal() {
-		// TODO Auto-generated method stub
+		int offset = MathUtil.getCentreOffset(parent.left(), parent.right(),
+				left(), right());
+		left(offset);
+		right(offset);
 		return (T) this;
 	}
 
