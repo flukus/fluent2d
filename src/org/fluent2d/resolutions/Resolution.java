@@ -1,6 +1,6 @@
 package org.fluent2d.resolutions;
 
-import org.fluent2d.Region;
+import org.fluent2d.IRegion;
 
 public class Resolution {
 	// public static final int LDPI = 100;
@@ -10,22 +10,22 @@ public class Resolution {
 
 	// public int width;
 	// public int height;
-	private final Region totalArea;
-	private final Region paddedArea;
+	private final IRegion totalArea;
+	private final IRegion paddedArea;
 	// public int dpi;
 	// public int margin = 5;
 	public String folderName;
 
-	public Resolution(Region totalArea, Region paddedArea, String folderName) {
+	public Resolution(IRegion totalArea, IRegion paddedArea, String folderName) {
 		this.totalArea = totalArea;
 		this.paddedArea = paddedArea;
 	}
 
-	public Region totalArea() {
+	public IRegion totalArea() {
 		return totalArea;
 	}
 
-	public Region paddedArea() {
+	public IRegion paddedArea() {
 		return paddedArea;
 	}
 

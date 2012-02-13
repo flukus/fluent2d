@@ -13,7 +13,7 @@ import java.util.List;
 import org.fluent2d.resolutions.Resolution;
 
 @SuppressWarnings("unchecked")
-public class Drawable<T extends Drawable<?>> extends Region<T> {
+public class Drawable<T extends Drawable<?>> {
 
 	public List<Drawable<?>> drawables;
 	public DrawOptions options;
