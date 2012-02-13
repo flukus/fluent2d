@@ -4,12 +4,12 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.GeneralPath;
 
-import org.fluent2d.Drawable;
+import org.fluent2d.DrawableRegion;
 import org.fluent2d.State;
 import org.fluent2d.Theme;
 import org.fluent2d.resolutions.Resolution;
 
-public class Triangle extends Drawable<Triangle> {
+public class Triangle extends DrawableRegion<Triangle> {
 
 	public static final int UP = 1;
 	public static final int DOWN = 1;

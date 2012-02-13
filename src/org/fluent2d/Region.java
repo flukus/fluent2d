@@ -1,6 +1,6 @@
 package org.fluent2d;
 
-public class Region {
+public class Region implements IRegion {
 
 	private final int top;
 	private final int left;
@@ -12,6 +12,22 @@ public class Region {
 		this.left = left;
 		this.bottom = bottom;
 		this.right = right;
+	}
+
+	@Override public int top() {
+		return this.top;
+	}
+
+	@Override public int left() {
+		return this.left;
+	}
+
+	@Override public int bottom() {
+		return this.bottom;
+	}
+
+	@Override public int right() {
+		return this.right;
 	}
 
 }

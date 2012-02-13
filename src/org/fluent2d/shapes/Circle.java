@@ -3,12 +3,12 @@ package org.fluent2d.shapes;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import org.fluent2d.Drawable;
+import org.fluent2d.DrawableRegion;
 import org.fluent2d.State;
 import org.fluent2d.Theme;
 import org.fluent2d.resolutions.Resolution;
 
-public class Circle extends Drawable<Circle> {
+public class Circle extends DrawableRegion<Circle> {
 
 	public Circle(Theme theme, Resolution resolution, State state) {
 		super(theme, resolution, state);

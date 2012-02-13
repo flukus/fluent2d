@@ -10,6 +10,6 @@ public interface IRegion<T extends IRegion<?>> {
 	public abstract int bottom();
 
 	// sets the right value in absolute pixels
-	public abstract T right(int right);
+	public abstract int right();
 
 }

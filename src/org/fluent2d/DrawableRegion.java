@@ -1,5 +1,7 @@
 package org.fluent2d;
 
+import org.fluent2d.resolutions.Resolution;
+
 @SuppressWarnings("unchecked")
 public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 		implements IRegion<T> {
@@ -8,29 +10,15 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 	private int left;
 	private int bottom;
 	private int right;
-	private IRegion parent;
+	private final IRegion parentRegion;
 
-	public DrawableRegion(int top, int left, int bottom, int right) {
-		this.top = top;
-		this.left = left;
-		this.bottom = bottom;
-		this.right = right;
-		parent = this;
-	}
-
-	public DrawableRegion(DrawableRegion<?> parentRegion) {
-		this.parent = parentRegion;
-		this.top = parentRegion.top();
-		this.left = parentRegion.left();
-		this.bottom = parentRegion.bottom();
-		this.right = parentRegion.right();
-	}
-
-	protected DrawableRegion() {
-	}
-
-	protected void setParent(DrawableRegion<?> parent) {
-		this.parent = parent;
+	public DrawableRegion(Theme theme, Resolution resolution, State state) {
+		super(theme, resolution, state);
+		top = resolution.paddedArea().top();
+		left = resolution.paddedArea().left();
+		bottom = resolution.paddedArea().bottom();
+		right = resolution.paddedArea().right();
+		parentRegion = resolution.paddedArea();
 	}
 
 	// gets the absolute value of top
@@ -45,13 +33,14 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 
 	// sets the top as a percentage
 	public T top(float topP) {
-		top = MathUtil.getPoint(topP, parent.top(), parent.bottom());
+		top = MathUtil
+				.getPoint(topP, parentRegion.top(), parentRegion.bottom());
 		return (T) this;
 	}
 
 	// sets the top in pixels relative to the parent
 	public T top(int topV) {
-		top = topV + parent.top();
+		top = topV + parentRegion.top();
 		return (T) this;
 	}
 
@@ -78,13 +67,14 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 
 	// sets the left as a percentage
 	public T left(float leftP) {
-		top = MathUtil.getPoint(leftP, parent.left(), parent.right());
+		top = MathUtil.getPoint(leftP, parentRegion.left(),
+				parentRegion.right());
 		return (T) this;
 	}
 
 	// sets the left in pixels relative to the parent
 	public T left(int leftV) {
-		left = leftV + parent.left();
+		left = leftV + parentRegion.left();
 		return (T) this;
 	}
 
@@ -116,7 +106,8 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 	}
 
 	public T bottom(float bottom) {
-		this.bottom = MathUtil.getPoint(bottom, parent.top(), parent.bottom());
+		this.bottom = MathUtil.getPoint(bottom, parentRegion.top(),
+				parentRegion.bottom());
 		return (T) this;
 	}
 
@@ -126,17 +117,11 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 		return (T) this;
 	}
 
-	public int right() {
+	@Override public int right() {
 		return this.right;
 	}
 
-	// sets the right value in absolute pixels
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.fluent2d.IRegion#right(int)
-	 */
-	@Override public T right(int right) {
+	public T right(int right) {
 		this.right = right;
 		return (T) this;
 	}
@@ -148,18 +133,22 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 	}
 
 	public T width(float widthP) {
-		right = MathUtil.getPoint(widthP, parent.left(), parent.right()) + left;
+		right = MathUtil.getPoint(widthP, parentRegion.left(),
+				parentRegion.right())
+				+ left;
 		return (T) this;
 	}
 
 	public T height(float heightP) {
-		right = MathUtil.getPoint(heightP, parent.top(), parent.bottom()) + top;
+		right = MathUtil.getPoint(heightP, parentRegion.top(),
+				parentRegion.bottom())
+				+ top;
 		return (T) this;
 	}
 
 	public T centerHorizontal() {
-		int offset = MathUtil.getCentreOffset(parent.left(), parent.right(),
-				left(), right());
+		int offset = MathUtil.getCentreOffset(parentRegion.left(),
+				parentRegion.right(), left(), right());
 		left(offset);
 		right(offset);
 		return (T) this;
