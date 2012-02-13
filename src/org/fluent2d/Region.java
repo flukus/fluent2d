@@ -100,8 +100,7 @@ public class Region<T extends Region<?>> {
 	}
 
 	public T bottom(float bottom) {
-		bottom = (int) ((parent.bottom() - parent.top()) * bottom)
-				+ parent.top();
+		this.bottom = MathUtil.getPoint(bottom, parent.top(), parent.bottom());
 		return (T) this;
 	}
 
