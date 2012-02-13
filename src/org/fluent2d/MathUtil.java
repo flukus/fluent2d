@@ -13,10 +13,11 @@ public class MathUtil {
 	public static int getCentreOffset(int parentX1, int parentX2, int childX1,
 			int childX2) {
 		int parentWidth = parentX2 - parentX1;
+		int parentCenter = parentWidth / 2;
 		int childWidth = childX2 - childX1;
-		int padding = parentWidth - childWidth;
-		int offset = padding / 2;
-		return offset;
+		int childCenter = childWidth / 2;
+		int offset = parentCenter - childCenter;
+		return offset + parentX1;
 	}
 
 }
