@@ -2,11 +2,11 @@ package org.fluent2d;
 
 public class MathUtil {
 
-	public static int getPoint(float pointP, int offsetA, int extentA) {
+	public static int getPoint(float pointP, int offsetV, int extentV) {
 		float divisor = pointP / 100;
-		int length = offsetA - extentA;
+		int length = extentV - offsetV;
 		int pointA = (int) (length * divisor);
-		int pointR = pointA + offsetA;
+		int pointR = pointA + offsetV;
 		return pointR;
 	}
 
