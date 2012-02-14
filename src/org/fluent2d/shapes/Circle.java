@@ -18,9 +18,9 @@ public class Circle extends DrawableRegion<Circle> {
 		Graphics2D g = super.getGraphics(i, true);
 
 		if (options.fill)
-			g.fillOval(left(), top(), right() - left(), bottom() - top());
+			g.fillOval(left(), top(), width(), height());
 		else
-			g.drawOval(left(), top(), right() - left(), bottom() - top());
+			g.drawOval(left(), top(), width(), height());
 	}
 
 }

@@ -8,7 +8,7 @@ public class DrawOptions implements Cloneable {
 	public double rotate;
 	public boolean fill;
 	public Color fillColor;
-	public float strokeSize;
+	public float penSize;
 
 	public DrawOptions() {
 

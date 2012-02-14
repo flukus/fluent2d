@@ -146,11 +146,19 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 		return (T) this;
 	}
 
+	public int width() {
+		return right() - left();
+	}
+
 	public T width(float widthP) {
 		right = MathUtil.getPoint(widthP, parentRegion().left(), parentRegion()
 				.right())
 				+ left;
 		return (T) this;
+	}
+
+	public int height() {
+		return bottom() - top();
 	}
 
 	public T height(float heightP) {

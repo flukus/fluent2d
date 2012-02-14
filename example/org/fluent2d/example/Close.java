@@ -16,9 +16,12 @@ public class Close extends Drawable<Close> {
 	@Override public void setup() {
 		super.setup();
 
-		add(Circle.class).fill(false);
-		add(Line.class).from(5f, 5f).to(95f, 95f);
-		add(Line.class).from(5f, 95f).to(95f, 5f);
+		fill(false);
+		penSize(30);
+
+		add(Circle.class);
+		add(Line.class).from(20f, 20f).to(80f, 80f);
+		add(Line.class).from(20f, 80f).to(80f, 20f);
 	}
 
 }

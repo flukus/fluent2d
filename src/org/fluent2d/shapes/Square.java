@@ -17,12 +17,10 @@ public class Square extends DrawableRegion<Square> {
 
 	@Override public void render(Image i) {
 		Graphics2D g = getGraphics(i, true);
-		int width = right() - left();
-		int height = bottom() - top();
 		if (options.fill)
-			g.fillRect(left(), top(), width, height);
+			g.fillRect(left(), top(), width(), height());
 		else
-			g.drawRect(left(), top(), width, height);
+			g.drawRect(left(), top(), width(), height());
 
 	}
 

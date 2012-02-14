@@ -19,7 +19,6 @@ public class Home extends Drawable<Home> {
 
 	@Override public void setup() {
 		super.setup();
-		theme.apply(options, state);
 		fill();
 
 		// create the body
@@ -28,7 +27,7 @@ public class Home extends Drawable<Home> {
 		add(Triangle.class).bottom(50f).applyDefault(Triangle.UP);
 
 		// border
-		add(Square.class).bottomR(-1).rightR(-1).fill(false).strokeSize(10);
+		add(Square.class).bottomR(-1).rightR(-1).fill(false).penSize(10);
 
 	}
 }

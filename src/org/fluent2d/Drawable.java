@@ -40,6 +40,8 @@ public class Drawable<T extends Drawable<?>> {
 	}
 
 	public void setup() {
+
+		theme.apply(options, state);
 		// setup children Drawable
 		for (Drawable<?> d : drawables)
 			d.setup();
@@ -60,7 +62,9 @@ public class Drawable<T extends Drawable<?>> {
 		if (applyAttributes) {
 			g.setColor(options.color);
 			g.rotate(options.rotate);
-			g.setStroke(new BasicStroke(options.strokeSize));
+			g.setStroke(new BasicStroke(options.penSize,
+					java.awt.BasicStroke.CAP_ROUND,
+					java.awt.BasicStroke.JOIN_ROUND));
 		}
 		return g;
 	}
@@ -96,8 +100,8 @@ public class Drawable<T extends Drawable<?>> {
 		return (T) this;
 	}
 
-	public T strokeSize(float strokeSize) {
-		this.options.strokeSize = strokeSize;
+	public T penSize(float penSize) {
+		this.options.penSize = penSize;
 		return (T) this;
 	}
 

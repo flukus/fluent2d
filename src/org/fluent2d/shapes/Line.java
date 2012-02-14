@@ -35,10 +35,8 @@ public class Line extends Drawable<Line> {
 	}
 
 	public Line to(float xP, float yP) {
-		fromX = MathUtil
-				.getPoint(xP, parentRegion.left(), parentRegion.right());
-		fromY = MathUtil
-				.getPoint(yP, parentRegion.top(), parentRegion.bottom());
+		toX = MathUtil.getPoint(xP, parentRegion.left(), parentRegion.right());
+		toY = MathUtil.getPoint(yP, parentRegion.top(), parentRegion.bottom());
 		return this;
 	}
 
