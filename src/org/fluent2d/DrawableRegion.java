@@ -117,6 +117,11 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 		return (T) this;
 	}
 
+	public T bottomA(int bottom) {
+		this.bottom = bottom;
+		return (T) this;
+	}
+
 	@Override public int right() {
 		return this.right;
 	}
@@ -126,9 +131,20 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 		return (T) this;
 	}
 
+	public T right(float rightR) {
+		this.right = MathUtil.getPoint(rightR, parentRegion.left(),
+				parentRegion.right());
+		return (T) this;
+	}
+
 	// sets the right value in absolute pixels relative to it's current value
 	public T rightR(int right) {
 		this.right = this.right + right;
+		return (T) this;
+	}
+
+	public T rightA(int right) {
+		this.right = right;
 		return (T) this;
 	}
 
@@ -147,10 +163,11 @@ public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
 	}
 
 	public T centerHorizontal() {
+		int width = right - left;
 		int offset = MathUtil.getCentreOffset(parentRegion.left(),
 				parentRegion.right(), left(), right());
-		left(offset);
-		right(offset);
+		leftA(offset);
+		rightA(offset + width);
 		return (T) this;
 	}
 
