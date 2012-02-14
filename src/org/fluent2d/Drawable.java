@@ -42,12 +42,12 @@ public class Drawable<T extends Drawable<?>> {
 
 	public void setup() {
 		// setup children Drawable
-		for (Drawable d : drawables)
+		for (Drawable<?> d : drawables)
 			d.setup();
 	}
 
 	public void render(Image i) {
-		for (Drawable d : drawables)
+		for (Drawable<?> d : drawables)
 			d.render(i);
 	}
 

@@ -1,6 +1,6 @@
 package org.fluent2d;
 
-public interface IRegion<T extends IRegion<?>> {
+public interface IRegion {
 
 	// gets the absolute value of top
 	public abstract int top();
@@ -9,7 +9,6 @@ public interface IRegion<T extends IRegion<?>> {
 
 	public abstract int bottom();
 
-	// sets the right value in absolute pixels
 	public abstract int right();
 
 }

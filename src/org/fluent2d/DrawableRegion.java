@@ -4,7 +4,7 @@ import org.fluent2d.resolutions.Resolution;
 
 @SuppressWarnings("unchecked")
 public class DrawableRegion<T extends DrawableRegion<?>> extends Drawable<T>
-		implements IRegion<T> {
+		implements IRegion {
 
 	private int top;
 	private int left;
