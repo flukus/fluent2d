@@ -6,6 +6,6 @@ public class ActionBarIconLDPI extends Resolution {
 
 	public ActionBarIconLDPI() {
 		super(new Region(0, 0, 18, 18), new Region(4, 4, 14, 14),
-				"drawable-ldpi");
+				Resolution.LDPI, "drawable-ldpi");
 	}
 }

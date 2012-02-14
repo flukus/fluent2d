@@ -12,12 +12,16 @@ public class State {
 	public State(String name, Color color) {
 		this.name = name;
 		this.color = color;
-		attributes = new HashMap<>();
+		this.attributes = new HashMap<>();
 	}
 
 	public State addAttribute(String key, String value) {
 		attributes.put(key, value);
 		return this;
+	}
+
+	public String name() {
+		return name;
 	}
 
 	public final static State[] buttonStates = new State[] {
