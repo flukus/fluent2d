@@ -18,9 +18,8 @@ public class Home extends Drawable<Home> {
 	}
 
 	@Override public void setup() {
-
+		super.setup();
 		theme.apply(options, state);
-		color(theme.getPrimaryColorFor(state));
 
 		// create the body
 		add(Square.class).top(50f).width(60f).centerHorizontal();

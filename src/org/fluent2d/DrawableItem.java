@@ -1,11 +1,11 @@
 package org.fluent2d;
 
-public class DrawableItem {
+public class DrawableItem<T extends Drawable<?>> {
 
 	private final String name;
-	private final Class<Drawable<?>> drawableClass;
+	private final Class<T> drawableClass;
 
-	public DrawableItem(String name, Class<Drawable<?>> klass) {
+	public DrawableItem(Class<T> klass, String name) {
 		this.name = name;
 		this.drawableClass = klass;
 	}
@@ -14,7 +14,7 @@ public class DrawableItem {
 		return name;
 	}
 
-	public Class<Drawable<?>> drawableClass() {
-		return drawableClass;
+	@SuppressWarnings("unchecked") public Class<Drawable<?>> drawableClass() {
+		return (Class<Drawable<?>>) drawableClass;
 	}
 }

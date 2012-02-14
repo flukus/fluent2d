@@ -17,8 +17,8 @@ public class Close extends Drawable<Close> {
 		super.setup();
 
 		add(Circle.class).fill(false);
-		add(Line.class).from(10f, 10f).to(90f, 90f);
-		add(Line.class).from(10f, 90f).to(90f, 10f);
+		add(Line.class).from(5f, 5f).to(95f, 95f);
+		add(Line.class).from(5f, 95f).to(95f, 5f);
 	}
 
 }

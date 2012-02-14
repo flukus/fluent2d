@@ -24,7 +24,7 @@ public class State {
 		return name;
 	}
 
-	public final static State[] buttonStates = new State[] {
+	public final static State[] androidActionBarDefaults = new State[] {
 			new State("normal", new Color(255, 255, 255, 76)),
 			new State("pressed", Color.green).addAttribute("state_pressed",
 					"true"),

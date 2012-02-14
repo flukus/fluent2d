@@ -1,5 +1,8 @@
 package org.fluent2d.shapes;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+
 import org.fluent2d.Drawable;
 import org.fluent2d.IRegion;
 import org.fluent2d.MathUtil;
@@ -37,6 +40,11 @@ public class Line extends Drawable<Line> {
 		fromY = MathUtil
 				.getPoint(yP, parentRegion.top(), parentRegion.bottom());
 		return this;
+	}
+
+	@Override public void render(Image i) {
+		Graphics2D g = getGraphics(i, true);
+		g.drawLine(fromX, fromY, toX, toY);
 	}
 
 }

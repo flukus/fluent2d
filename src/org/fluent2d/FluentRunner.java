@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,16 +25,16 @@ import org.w3c.dom.Element;
 public class FluentRunner {
 
 	public static void Run(File outputDir, Theme theme,
-			List<DrawableItem> drawables, List<Resolution> resolutions,
-			List<State> states) {
+			DrawableItem<?>[] drawables, Resolution[] androiddefaults,
+			State[] androidactionbardefaults) {
 
 		if (!outputDir.exists() || !outputDir.isDirectory())
 			throw new RuntimeException(
 					"outputDir must exist and must be a directory");
 
-		for (DrawableItem drawableItem : drawables) {
-			for (Resolution res : Resolution.androidDefaults) {
-				for (State state : State.buttonStates) {
+		for (DrawableItem<?> drawableItem : drawables) {
+			for (Resolution res : androiddefaults) {
+				for (State state : androidactionbardefaults) {
 
 					Drawable<?> drawable = createDrawable(
 							drawableItem.drawableClass(), theme, res, state);
@@ -55,7 +54,7 @@ public class FluentRunner {
 
 			try {
 				createSelector(outputDir.getAbsolutePath(), drawableItem,
-						State.buttonStates);
+						androidactionbardefaults);
 			} catch (Exception e) {
 				throw new RuntimeException("Error creatign selector", e);
 			}
@@ -97,6 +96,7 @@ public class FluentRunner {
 
 		// ensure the folder exists
 		outputfile.getParentFile().mkdir();
+		outputfile.delete();
 
 		try {
 			ImageIO.write(image, "png", outputfile);
@@ -106,7 +106,7 @@ public class FluentRunner {
 	}
 
 	public static void createSelector(String directoryAbsolutePath,
-			DrawableItem drawable, State[] states)
+			DrawableItem<?> drawable, State[] states)
 			throws ParserConfigurationException,
 			TransformerFactoryConfigurationError, IOException,
 			TransformerException {
@@ -143,6 +143,7 @@ public class FluentRunner {
 		// initialize StreamResult with File object to save to file
 		String filename = String.format("%s/%s/%s.xml", directoryAbsolutePath,
 				"drawable", drawable.name());
+		new File(filename).getParentFile().mkdir();
 		FileWriter fstream = new FileWriter(filename);
 		StreamResult result = new StreamResult(fstream);
 		DOMSource source = new DOMSource(doc);
@@ -150,6 +151,7 @@ public class FluentRunner {
 
 		String xmlString = result.getWriter().toString();
 		System.out.println(xmlString);
+		fstream.flush();
 		fstream.close();
 
 	}
