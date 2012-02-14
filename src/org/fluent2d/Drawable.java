@@ -85,17 +85,20 @@ public class Drawable<T extends Drawable<?>> {
 		return (T) this;
 	}
 
-	public void fill() {
+	public T fill() {
 		options.fillColor = options.color;
 		options.fill = true;
+		return (T) this;
 	}
 
-	public void fill(boolean value) {
+	public T fill(boolean value) {
 		options.fill = value;
+		return (T) this;
 	}
 
-	public void strokeSize(float strokeSize) {
+	public T strokeSize(float strokeSize) {
 		this.options.strokeSize = strokeSize;
+		return (T) this;
 	}
 
 	public <N extends Drawable<?>> N add(Class<N> klass) {
@@ -105,6 +108,7 @@ public class Drawable<T extends Drawable<?>> {
 			N n = constructor.newInstance(this.theme, this.resolution,
 					this.state);
 			drawables.add(n);
+			n.setOptions(options.clone());
 			return n;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -18,6 +18,6 @@ public class Main {
 				new DrawableItem<Close>(Close.class, "close") };
 
 		FluentRunner.Run(rootDir, new ICSDarkTheme(), drawables,
-				Resolution.androidDefaults, State.androidActionBarDefaults);
+				Resolution.debugResolutions, State.androidActionBarDefaults);
 	}
 }

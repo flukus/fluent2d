@@ -20,14 +20,15 @@ public class Home extends Drawable<Home> {
 	@Override public void setup() {
 		super.setup();
 		theme.apply(options, state);
+		fill();
 
 		// create the body
 		add(Square.class).top(50f).width(60f).centerHorizontal();
 		// the roof
-		add(Triangle.class).type(Triangle.UP).bottom(50f);
+		add(Triangle.class).bottom(50f).applyDefault(Triangle.UP);
 
 		// border
-		add(Square.class).bottomR(-1).rightR(-1).fill(false);
+		add(Square.class).bottomR(-1).rightR(-1).fill(false).strokeSize(10);
 
 	}
 }

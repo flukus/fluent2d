@@ -34,6 +34,9 @@ public class Resolution {
 	}
 
 	public static final Resolution[] androidDefaults = new Resolution[] { new ActionBarIconLDPI() };
+
+	public static final Resolution[] debugResolutions = new Resolution[] { new DebugResolution() };
+
 	// new Resolution(18, 18, LDPI, "drawable-ldpi"),
 	// new Resolution(48, 48, HDPI, "drawable-hdpi"),
 	// new Resolution(64, 64, XHDPI, "drawable-xhdpi"),
